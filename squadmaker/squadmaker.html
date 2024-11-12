@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>축구 전술판</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        .field {
+            width: 100vw; /* 전체 너비 */
+            height: 100vh; /* 화면 높이의 60% */
+            background-color: green;
+            position: relative;
+        }
+        .player {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: absolute;
+            text-align: center;
+            line-height: 40px;
+            cursor: move;
+        }
+        .teamA > .player {
+            background-color: red;
+        }
+        .teamB > .player {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="field" id="field">
+        <!-- 왼쪽 팀 (팀 A) -->
+        <div class="teamA">
+            <!-- 골키퍼 -->
+            <div class="player" id="player1" style="top: 45%; left: 5%;" draggable="true">GK</div>
+            <!-- 수비수 -->
+            <div class="player" id="player2" style="top: 10%; left: 15%;" draggable="true">LB</div>
+            <div class="player" id="player3" style="top: 30%; left: 15%;" draggable="true">CB</div>
+            <div class="player" id="player4" style="top: 60%; left: 15%;" draggable="true">CB</div>
+            <div class="player" id="player5" style="top: 80%; left: 15%;" draggable="true">RB</div>
+            <!-- 미드필더 -->
+            <div class="player" id="player6" style="top: 30%; left: 25%;" draggable="true">CDM</div>
+            <div class="player" id="player7" style="top: 60%; left: 25%;" draggable="true">CDM</div>
+            <div class="player" id="player8" style="top: 45%; left: 35%;" draggable="true">CAM</div>
+            <!-- 공격수 -->
+            <div class="player" id="player9" style="top: 10%; left: 35%;" draggable="true">LW</div>
+            <div class="player" id="player10" style="top: 45%; left: 45%;" draggable="true">ST</div>
+            <div class="player" id="player11" style="top: 80%; left: 35%;" draggable="true">RW</div>
+        </div>
+
+        <!-- 오른쪽 팀 (팀 B) -->
+        <div class="teamB">
+            <!-- 골키퍼 -->
+            <div class="player" id="player12" style="top: 45%; right: 5%;" draggable="true">GK</div>
+            <!-- 수비수 -->
+            <div class="player" id="player13" style="top: 10%; right: 15%;" draggable="true">RB</div>
+            <div class="player" id="player14" style="top: 30%; right: 15%;" draggable="true">CB</div>
+            <div class="player" id="player15" style="top: 60%; right: 15%;" draggable="true">CB</div>
+            <div class="player" id="player16" style="top: 80%; right: 15%;" draggable="true">LB</div>
+            <!-- 미드필더 -->
+            <div class="player" id="player17" style="top: 30%; right: 25%;" draggable="true">CDM</div>
+            <div class="player" id="player18" style="top: 60%; right: 25%;" draggable="true">CDM</div>
+            <div class="player" id="player19" style="top: 45%; right: 35%;" draggable="true">CAM</div>
+            <!-- 공격수 -->
+            <div class="player" id="player20" style="top: 10%; right: 35%;" draggable="true">RW</div>
+            <div class="player" id="player21" style="top: 45%; right: 45%;" draggable="true">ST</div>
+            <div class="player" id="player22" style="top: 80%; right: 35%;" draggable="true">LW</div>
+        </div>
+    </div>
+
+    <script>
+        const players = document.querySelectorAll('.player');
+
+        players.forEach(player => {
+            player.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('text/plain', e.target.id);
+            });
+
+            player.addEventListener('dragend', () => {
+                player.classList.remove('dragging');
+            });
+        });
+
+        const field = document.getElementById('field');
+
+        field.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        });
+
+        field.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const playerId = e.dataTransfer.getData('text/plain');
+            const player = document.getElementById(playerId);
+
+            // 선수 위치 조정
+            const rect = field.getBoundingClientRect();
+            const x = e.clientX - rect.left - 15; // 중앙 정렬
+            const y = e.clientY - rect.top - 15; // 중앙 정렬
+
+            player.style.left = `${x}px`;
+            player.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>
