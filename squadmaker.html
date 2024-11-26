@@ -10,7 +10,7 @@
             overflow: hidden;
         }
         .field {
-            background-image: url(축구장.jpg);
+            background-image: url(images/축구장.jpg);
             width: 100vw;
             height: 100vh;
             background-repeat: no-repeat;
@@ -45,6 +45,18 @@
             font-size: 10px;
             cursor: pointer;
         }
+        .op_controls {
+            position: absolute;
+            top: 10px;
+            right: 15%;
+            transform: translateX(50%);
+            z-index: 1000;
+        }
+        .op_controls button {
+            margin: 5px;
+            font-size: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +66,13 @@
         <button id="formation4123">4-1-2-3</button>
         <button id="formation442">4-4-2</button>
         <button id="formation523">5-2-3</button>
+    </div>
+    <div class="op_controls">
+        <button id="op_formation433">4-3-3</button>
+        <button id="op_formation4231">4-2-3-1</button>
+        <button id="op_formation4123">4-1-2-3</button>
+        <button id="op_formation442">4-4-2</button>
+        <button id="op_formation523">5-2-3</button>
     </div>
     <div class="field" id="field">
         <!-- 왼쪽 팀 (팀 A) -->
@@ -85,214 +104,16 @@
             <div class="player" id="player15" style="top: 60%; right: 15%;" draggable="true">CB</div>
             <div class="player" id="player16" style="top: 80%; right: 15%;" draggable="true">LB</div>
             <!-- 미드필더 -->
-            <div class="player" id="player17" style="top: 20%; right: 27%;" draggable="true">CDM</div>
-            <div class="player" id="player18" style="top: 70%; right: 27%;" draggable="true">CDM</div>
-            <div class="player" id="player19" style="top: 45%; right: 27%;" draggable="true">CAM</div>
+            <div class="player" id="player17" style="top: 20%; right: 27%;" draggable="true">RCM</div>
+            <div class="player" id="player18" style="top: 70%; right: 27%;" draggable="true">LCM</div>
+            <div class="player" id="player19" style="top: 45%; right: 27%;" draggable="true">CM</div>
             <!-- 공격수 -->
             <div class="player" id="player20" style="top: 20%; right: 40%;" draggable="true">RW</div>
             <div class="player" id="player21" style="top: 45%; right: 40%;" draggable="true">ST</div>
             <div class="player" id="player22" style="top: 70%; right: 40%;" draggable="true">LW</div>
         </div>
     </div>
-
-    <script>
-        // 선수들을 새로운 포지션으로 이동시키는 함수
-        function movePlayers(positions, names) {
-            for (const [id, position] of Object.entries(positions)) {
-                const player = document.getElementById(id);
-                if (player) {
-                    player.style.left = position.left;
-                    player.style.top = position.top;
-                    player.textContent = names[id]; // 선수 이름 변경
-                }
-            }
-        }
-        // 433 버튼 클릭 시 실행
-        document.getElementById('formation433').addEventListener('click', () => {
-            const positions = {
-                player1: { left: '5%', top: '45%' }, // GK
-                player2: { left: '15%', top: '10%' }, // LB
-                player3: { left: '15%', top: '30%' }, // CB
-                player4: { left: '15%', top: '60%' }, // CB
-                player5: { left: '15%', top: '80%' }, // RB
-                player6: { left: '27%', top: '20%' }, // LCM
-                player7: { left: '27%', top: '70%' }, // RCM
-                player8: { left: '27%', top: '45%' }, // CM
-                player9: { left: '40%', top: '20%' }, // LW
-                player10: { left: '40%', top: '45%' }, // ST
-                player11: { left: '40%', top: '70%' }, // RW
-            };
-            const names = {
-                player1: 'GK',
-                player2: 'LB',
-                player3: 'CB',
-                player4: 'CB',
-                player5: 'RB',
-                player6: 'LCM',
-                player7: 'RCM',
-                player8: 'CM',
-                player9: 'LW',
-                player10: 'ST',
-                player11: 'RW',
-            }
-            movePlayers(positions, names);
-        });
-
-        // 4231 버튼 클릭 시 실행
-        document.getElementById('formation4231').addEventListener('click', () => {
-            const positions = {
-                player1: { left: '5%', top: '45%' }, // GK
-                player2: { left: '15%', top: '10%' }, // LB
-                player3: { left: '15%', top: '30%' }, // CB
-                player4: { left: '15%', top: '60%' }, // CB
-                player5: { left: '15%', top: '80%' }, // RB
-                player6: { left: '25%', top: '30%' }, // CDM
-                player7: { left: '25%', top: '60%' }, // CDM
-                player8: { left: '35%', top: '45%' }, // CAM
-                player9: { left: '35%', top: '10%' }, // LM
-                player10: { left: '45%', top: '45%' }, // ST
-                player11: { left: '35%', top: '80%' }, // RM
-            };
-            const names = {
-                player1: 'GK',
-                player2: 'LB',
-                player3: 'CB',
-                player4: 'CB',
-                player5: 'RB',
-                player6: 'CDM',
-                player7: 'CDM',
-                player8: 'CAM',
-                player9: 'LM',
-                player10: 'ST',
-                player11: 'RM',
-            }
-            movePlayers(positions, names);
-        });
-
-        // 포메이션 3 버튼 클릭 시 실행
-        document.getElementById('formation4123').addEventListener('click', () => {
-            const positions = {
-                player1: { left: '5%', top: '45%' }, // GK
-                player2: { left: '15%', top: '10%' }, // LB
-                player3: { left: '15%', top: '30%' }, // CB
-                player4: { left: '15%', top: '60%' }, // CB
-                player5: { left: '15%', top: '80%' }, // RB
-                player6: { left: '23%', top: '45%' }, // CDM
-                player7: { left: '30%', top: '60%' }, // RCM
-                player8: { left: '30%', top: '30%' }, // LCM
-                player9: { left: '37%', top: '10%' }, // LW
-                player10: { left: '45%', top: '45%' }, // ST
-                player11: { left: '37%', top: '80%' }, // RW
-            };
-            const names = {
-                player1: 'GK',
-                player2: 'LB',
-                player3: 'CB',
-                player4: 'CB',
-                player5: 'RB',
-                player6: 'CDM',
-                player7: 'RCM',
-                player8: 'LCM',
-                player9: 'LW',
-                player10: 'ST',
-                player11: 'RW',
-            }
-            movePlayers(positions, names);
-        });
-
-        // 포메이션 4 버튼 클릭 시 실행
-        document.getElementById('formation442').addEventListener('click', () => {
-            const positions = {
-                player1: { left: '5%', top: '45%' }, // GK
-                player2: { left: '15%', top: '10%' }, // LB
-                player3: { left: '15%', top: '30%' }, // CB
-                player4: { left: '15%', top: '60%' }, // CB
-                player5: { left: '15%', top: '80%' }, // RB
-                player6: { left: '27%', top: '30%' }, // LCM
-                player7: { left: '27%', top: '60%' }, // RCM
-                player8: { left: '40%', top: '30%' }, // LS
-                player9: { left: '27%', top: '10%' }, // LM
-                player10: { left: '40%', top: '60%' }, // RS
-                player11: { left: '27%', top: '80%' }, // RM
-            };
-            const names = {
-                player1: 'GK',
-                player2: 'LB',
-                player3: 'CB',
-                player4: 'CB',
-                player5: 'RB',
-                player6: 'LCM',
-                player7: 'RCM',
-                player8: 'LS',
-                player9: 'LM',
-                player10: 'RS',
-                player11: 'RM',
-            }
-            movePlayers(positions, names);
-        });
-
-        // 포메이션 5 버튼 클릭 시 실행
-        document.getElementById('formation523').addEventListener('click', () => {
-            const positions = {
-                player1: { left: '5%', top: '45%' }, // GK
-                player2: { left: '18%', top: '10%' }, // LB
-                player3: { left: '15%', top: '25%' }, // CB
-                player4: { left: '15%', top: '65%' }, // CB
-                player5: { left: '18%', top: '80%' }, // RB
-                player6: { left: '15%', top: '45%' }, // CDM
-                player7: { left: '30%', top: '60%' }, // RCM
-                player8: { left: '30%', top: '30%' }, // LCM
-                player9: { left: '37%', top: '10%' }, // LW
-                player10: { left: '45%', top: '45%' }, // ST
-                player11: { left: '37%', top: '80%' }, // RW
-            };
-            const names = {
-                player1: 'GK',
-                player2: 'LB',
-                player3: 'LCB',
-                player4: 'RCB',
-                player5: 'RB',
-                player6: 'CB',
-                player7: 'RCM',
-                player8: 'LCM',
-                player9: 'LW',
-                player10: 'ST',
-                player11: 'RW',
-            }
-            movePlayers(positions, names);
-        });
-
-        const players = document.querySelectorAll('.player');
-
-        players.forEach(player => {
-            player.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text/plain', e.target.id);
-            });
-
-            player.addEventListener('dragend', () => {
-                player.classList.remove('dragging');
-            });
-        });
-
-        const field = document.getElementById('field');
-
-        field.addEventListener('dragover', (e) => {
-            e.preventDefault();
-        });
-
-        field.addEventListener('drop', (e) => {
-            e.preventDefault();
-            const playerId = e.dataTransfer.getData('text/plain');
-            const player = document.getElementById(playerId);
-
-            // 선수 위치 조정
-            const rect = field.getBoundingClientRect();
-            const x = e.clientX - rect.left - 15; // 중앙 정렬
-            const y = e.clientY - rect.top - 15; // 중앙 정렬
-
-            player.style.left = `${x}px`;
-            player.style.top = `${y}px`;
-        });
-    </script>
+    <script src="move.js"></script>
+    <script src="position.js"></script>
 </body>
 </html>
