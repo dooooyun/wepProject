@@ -3,63 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>축구 전술판</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        .field {
-            background-image: url(images/축구장.jpg);
-            width: 100vw;
-            height: 100vh;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-            position: relative;
-        }
-        .player {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            position: absolute;
-            text-align: center;
-            line-height: 40px;
-            cursor: move;
-        }
-        .teamA > .player {
-            background-color: red;
-        }
-        .teamB > .player {
-            background-color: blue;
-        }
-        .controls {
-            position: absolute;
-            top: 10px;
-            left: 15%;
-            transform: translateX(-50%);
-            z-index: 1000;
-        }
-        .controls button {
-            margin: 5px;
-            font-size: 10px;
-            cursor: pointer;
-        }
-        .op_controls {
-            position: absolute;
-            top: 10px;
-            right: 15%;
-            transform: translateX(50%);
-            z-index: 1000;
-        }
-        .op_controls button {
-            margin: 5px;
-            font-size: 10px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- 우리팀 포메이션 -->
     <div class="controls">
         <button id="formation433">4-3-3</button>
         <button id="formation4231">4-2-3-1</button>
@@ -67,6 +15,8 @@
         <button id="formation442">4-4-2</button>
         <button id="formation523">5-2-3</button>
     </div>
+
+    <!-- 상대팀 포메이션 -->
     <div class="op_controls">
         <button id="op_formation433">4-3-3</button>
         <button id="op_formation4231">4-2-3-1</button>
@@ -74,46 +24,69 @@
         <button id="op_formation442">4-4-2</button>
         <button id="op_formation523">5-2-3</button>
     </div>
+
+    <!-- 세트피스 -->
+    <div class="setpiece">
+        <!-- 코너킥 -->
+        <div class="cornerkick" style="margin-bottom: 5px;">
+            <button id="left_corner">left corner</button>
+            <button id="right_corner">right corner</button>
+            <button id="op_left_corner">op left corner</button>
+            <button id="op_right_corner">op right corner</button>
+        </div>
+        <!-- 프리킥 -->
+        <div class="freekick">
+            <button id="left_freekick">left freekick</button>
+            <button id="right_freekick">right freekick</button>
+            <button id="op_left_freekick">op left freekick</button>
+            <button id="op_right_freekick">op right freekick</button>
+        </div>
+    </div>
+
+    <!-- 필드 -->
     <div class="field" id="field">
+        <div class="ball" id="ball" draggable="true"></div>
         <!-- 왼쪽 팀 (팀 A) -->
         <div class="teamA">
             <!-- 골키퍼 -->
-            <div class="player" id="player1" style="top: 45%; left: 5%;" draggable="true">GK</div>
+            <div class="player" id="player1" style="top: 48%; left: 5%;" draggable="true">GK</div>
             <!-- 수비수 -->
-            <div class="player" id="player2" style="top: 10%; left: 15%;" draggable="true">LB</div>
-            <div class="player" id="player3" style="top: 30%; left: 15%;" draggable="true">CB</div>
-            <div class="player" id="player4" style="top: 60%; left: 15%;" draggable="true">CB</div>
-            <div class="player" id="player5" style="top: 80%; left: 15%;" draggable="true">RB</div>
+            <div class="player" id="player2" style="top: 13%; left: 15%;" draggable="true">LB</div>
+            <div class="player" id="player3" style="top: 33%; left: 15%;" draggable="true">CB</div>
+            <div class="player" id="player4" style="top: 63%; left: 15%;" draggable="true">CB</div>
+            <div class="player" id="player5" style="top: 83%; left: 15%;" draggable="true">RB</div>
             <!-- 미드필더 -->
-            <div class="player" id="player6" style="top: 20%; left: 27%;" draggable="true">LCM</div>
-            <div class="player" id="player7" style="top: 70%; left: 27%;" draggable="true">RCM</div>
-            <div class="player" id="player8" style="top: 45%; left: 27%;" draggable="true">CM</div>
+            <div class="player" id="player6" style="top: 23%; left: 27%;" draggable="true">LCM</div>
+            <div class="player" id="player7" style="top: 73%; left: 27%;" draggable="true">RCM</div>
+            <div class="player" id="player8" style="top: 48%; left: 27%;" draggable="true">CM</div>
             <!-- 공격수 -->
-            <div class="player" id="player9" style="top: 20%; left: 40%;" draggable="true">LW</div>
-            <div class="player" id="player10" style="top: 45%; left: 40%;" draggable="true">ST</div>
-            <div class="player" id="player11" style="top: 70%; left: 40%;" draggable="true">RW</div>
+            <div class="player" id="player9" style="top: 23%; left: 40%;" draggable="true">LW</div>
+            <div class="player" id="player10" style="top: 48%; left: 40%;" draggable="true">ST</div>
+            <div class="player" id="player11" style="top: 73%; left: 40%;" draggable="true">RW</div>
         </div>
-
         <!-- 오른쪽 팀 (팀 B) -->
         <div class="teamB">
             <!-- 골키퍼 -->
-            <div class="player" id="player12" style="top: 45%; right: 5%;" draggable="true">GK</div>
+            <div class="player" id="player12" style="top: 48%; right: 5%;" draggable="true">GK</div>
             <!-- 수비수 -->
-            <div class="player" id="player13" style="top: 10%; right: 15%;" draggable="true">RB</div>
-            <div class="player" id="player14" style="top: 30%; right: 15%;" draggable="true">CB</div>
-            <div class="player" id="player15" style="top: 60%; right: 15%;" draggable="true">CB</div>
-            <div class="player" id="player16" style="top: 80%; right: 15%;" draggable="true">LB</div>
+            <div class="player" id="player13" style="top: 13%; right: 15%;" draggable="true">RB</div>
+            <div class="player" id="player14" style="top: 33%; right: 15%;" draggable="true">CB</div>
+            <div class="player" id="player15" style="top: 63%; right: 15%;" draggable="true">CB</div>
+            <div class="player" id="player16" style="top: 83%; right: 15%;" draggable="true">LB</div>
             <!-- 미드필더 -->
-            <div class="player" id="player17" style="top: 20%; right: 27%;" draggable="true">RCM</div>
-            <div class="player" id="player18" style="top: 70%; right: 27%;" draggable="true">LCM</div>
-            <div class="player" id="player19" style="top: 45%; right: 27%;" draggable="true">CM</div>
+            <div class="player" id="player17" style="top: 23%; right: 27%;" draggable="true">RCM</div>
+            <div class="player" id="player18" style="top: 73%; right: 27%;" draggable="true">LCM</div>
+            <div class="player" id="player19" style="top: 48%; right: 27%;" draggable="true">CM</div>
             <!-- 공격수 -->
-            <div class="player" id="player20" style="top: 20%; right: 40%;" draggable="true">RW</div>
-            <div class="player" id="player21" style="top: 45%; right: 40%;" draggable="true">ST</div>
-            <div class="player" id="player22" style="top: 70%; right: 40%;" draggable="true">LW</div>
+            <div class="player" id="player20" style="top: 23%; right: 40%;" draggable="true">RW</div>
+            <div class="player" id="player21" style="top: 48%; right: 40%;" draggable="true">ST</div>
+            <div class="player" id="player22" style="top: 73%; right: 40%;" draggable="true">LW</div>
         </div>
     </div>
+
+    <!-- 자바스크립트 -->
     <script src="move.js"></script>
     <script src="position.js"></script>
+    <script src="setpiece.js"></script>
 </body>
 </html>

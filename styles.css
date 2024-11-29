@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.field {
+    background-image: url(images/축구장.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: relative;
+}
+.player {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    line-height: 40px;
+    cursor: move;
+}
+.teamA > .player {
+    background-color: red;
+}
+.teamB > .player {
+    background-color: blue;
+}
+.controls {
+    position: absolute;
+    top: 10px;
+    left: 15%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.controls button {
+    margin: 5px;
+    font-size: 10px;
+    cursor: pointer;
+}
+.op_controls {
+    position: absolute;
+    top: 10px;
+    right: 15%;
+    transform: translateX(50%);
+    z-index: 1000;
+}
+.op_controls button {
+    margin: 5px;
+    font-size: 10px;
+    cursor: pointer;
+}
+.setpiece {
+    position: absolute;
+    bottom: 10px;
+    left: 20%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+.ball {
+    width: 40px; 
+    height: 40px; 
+    background-image: url('./images/축구공.png');
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
