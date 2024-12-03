@@ -23,42 +23,47 @@ body {
 }
 .teamA > .player {
     background-color: red;
+    color: aliceblue;
 }
 .teamB > .player {
     background-color: blue;
+    color: aliceblue;
+}
+.flow_controls {
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+    transform: translateX(-50%);
+    z-index: 1000;
 }
 .controls {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.op_controls {
+    position: absolute;
+    top: 10px;
+    right: 5%;
+    transform: translateX(50%);
+    z-index: 1000;
+}
+.setpiece {
     position: absolute;
     top: 10px;
     left: 15%;
     transform: translateX(-50%);
     z-index: 1000;
 }
-.controls button {
-    margin: 5px;
-    font-size: 10px;
-    cursor: pointer;
-}
-.op_controls {
+.op_setpiece {
     position: absolute;
     top: 10px;
     right: 15%;
     transform: translateX(50%);
     z-index: 1000;
 }
-.op_controls button {
-    margin: 5px;
-    font-size: 10px;
-    cursor: pointer;
-}
-.setpiece {
-    position: absolute;
-    bottom: 10px;
-    left: 20%;
-    transform: translateX(-50%);
-    z-index: 1000;
-}
-
 .ball {
     width: 40px; 
     height: 40px; 
@@ -69,4 +74,42 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+}
+
+.line-pass {
+    border-style: dotted; /* 점선 스타일 */
+    border-width: 2px;
+    border-color: green;
+}
+.line-dribble {
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+}
+.line-shooting {
+    border-style: solid;
+    border-width: 2px;
+    border-color: orange;
+}
+
+.line {
+    position: absolute;
+    height: 2px; /* 선 두께 */
+    transform-origin: 0 0;
+    background-color: black;
+}
+
+.line::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%) rotate(45deg); /* 기본 화살표 각도 */
+    width: 10px;
+    height: 10px;
+    border: solid;
+    border-width: 4px 4px 0 0; /* 화살표 모양 */
+}
+.line::after {
+    border-color: var(--arrow-color); /* 화살표 색상 */
 }

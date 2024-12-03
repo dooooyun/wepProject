@@ -6,41 +6,55 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+    <div class="flow_controls">
+        <button id="passButton">패스</button>
+        <button id="dribbleButton">선수 움직임</button>
+        <button id="shootButton">슈팅</button>
+    </div>
     <!-- 우리팀 포메이션 -->
     <div class="controls">
-        <button id="formation433">4-3-3</button>
-        <button id="formation4231">4-2-3-1</button>
-        <button id="formation4123">4-1-2-3</button>
-        <button id="formation442">4-4-2</button>
-        <button id="formation523">5-2-3</button>
+        <button id="changeFormation">포메이션 변경</button>
+        <select id="formationSelector" style="display: none;">
+            <option value="nope">x</option>
+            <option value="433">4-3-3</option>
+            <option value="4231">4-2-3-1</option>
+            <option value="4123">4-1-2-3</option>
+            <option value="442">4-4-2</option>
+            <option value="523">5-2-3</option>
+        </select>
     </div>
 
     <!-- 상대팀 포메이션 -->
     <div class="op_controls">
-        <button id="op_formation433">4-3-3</button>
-        <button id="op_formation4231">4-2-3-1</button>
-        <button id="op_formation4123">4-1-2-3</button>
-        <button id="op_formation442">4-4-2</button>
-        <button id="op_formation523">5-2-3</button>
+        <button id="op_changeFormation">포메이션 변경</button>
+        <select id="op_formationSelector" style="display: none;">
+            <option value="onpe">x</option>
+            <option value="op_433">4-3-3</option>
+            <option value="op_4231">4-2-3-1</option>
+            <option value="op_4123">4-1-2-3</option>
+            <option value="op_442">4-4-2</option>
+            <option value="op_523">5-2-3</option>
+        </select>
     </div>
 
     <!-- 세트피스 -->
     <div class="setpiece">
-        <!-- 코너킥 -->
-        <div class="cornerkick" style="margin-bottom: 5px;">
-            <button id="left_corner">left corner</button>
-            <button id="right_corner">right corner</button>
-            <button id="op_left_corner">op left corner</button>
-            <button id="op_right_corner">op right corner</button>
-        </div>
-        <!-- 프리킥 -->
-        <div class="freekick">
-            <button id="left_freekick">left freekick</button>
-            <button id="right_freekick">right freekick</button>
-            <button id="op_left_freekick">op left freekick</button>
-            <button id="op_right_freekick">op right freekick</button>
-        </div>
+        <button id="changeSetpiece">세트피스 변경</button>
+        <select id="setpieceSelector" style="display: none;">
+            <option value="nope">x</option>
+            <!-- 코너킥 -->
+            <option value="left_corner">left corner</option>
+            <option value="right_corner">right corner</option>
+        </select>
+    </div>
+    <div class="op_setpiece">
+        <button id="op_changeSetpiece">세트피스 변경</button>
+        <select id="op_setpieceSelector" style="display: none;">
+            <option value="nope">x</option>
+            <!-- 코너킥 -->
+            <option value="op_left_corner">op left corner</option>
+            <option value="op_right_corner">op right corner</option>
+        </select>
     </div>
 
     <!-- 필드 -->
@@ -88,5 +102,6 @@
     <script src="move.js"></script>
     <script src="position.js"></script>
     <script src="setpiece.js"></script>
+    <script src="line.js"></script>
 </body>
 </html>
