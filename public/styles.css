@@ -1,0 +1,417 @@
+@font-face {
+    font-family: ethnocentric-font;
+    src: url('/font/ethnocentric rg.ttf');
+}
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.player-card {
+    width: 180px;
+    height: 300px;
+    background: linear-gradient(135deg, #1e90ff, #00ced1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+}
+.form-container {
+    border: solid 3px black;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    font-weight: 700;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: solid 3px black;
+    border-radius: 10px;
+}
+
+.card_complete {
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    font-size: 15px;
+    font-weight: 700;
+}
+.card_complete:hover {
+    background: black;
+    border-color: black;
+    color: #fff;
+}
+
+.player-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px;
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px
+}
+
+.player-position {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.player-photo img {
+    width: 100%;
+    height: 100px;
+    border-bottom: 2px solid #fff;
+}
+
+.card-body {
+    padding: 0px 15px 15px 15px;
+}
+
+.player-name {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 10px;
+}
+
+.stat strong {
+    font-size: 10px;
+}
+
+.field {
+    background-image: url(images/축구장.jpg);
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    position: relative;
+}
+.main_field {
+    background-image: url(images/Squadmaker_Image.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 700px;
+    height: 800px;
+    position: relative;
+    border: solid 3px black;
+    border-top: 0;
+}
+.player {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    line-height: 40px;
+    cursor: move;
+}
+.team > .player {
+    background-color: aliceblue;
+    color: black;
+    border: 2px solid black;
+}
+.teamA > .player {
+    background: #fff;
+    border: 2px solid red;
+    border-radius: 50px;
+    color: red;
+}
+.teamA > .player:hover {
+    background: red;
+    border-color: red;
+    color: #fff;
+}
+.teamB > .player {
+    background: #fff;
+    border: 2px solid blue;
+    border-radius: 50px;
+    color: blue;
+}
+.teamB > .player:hover {
+    background: blue;
+    border-color: blue;
+    color: #fff;
+}
+.flow_controls {
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.delete_controls {
+    position: absolute;
+    bottom: 20px;
+    left: 35%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.controls {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.op_controls {
+    position: absolute;
+    top: 10px;
+    right: 5%;
+    transform: translateX(50%);
+    z-index: 1000;
+}
+.setpiece {
+    position: absolute;
+    top: 10px;
+    left: 15%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.op_setpiece {
+    position: absolute;
+    top: 10px;
+    right: 15%;
+    transform: translateX(50%);
+    z-index: 1000;
+}
+.ball {
+    width: 40px; 
+    height: 40px; 
+    background-image: url('./images/축구공.png');
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.line-pass {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ef4836;
+}
+.line-dribble {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #f9bf3b;
+}
+.line-shooting {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #59abe3;
+}
+
+.line {
+    position: absolute;
+    height: 2px;
+    transform-origin: 0 0;
+    background-color: black;
+}
+
+.line::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    border: solid;
+    border-width: 4px 4px 0 0;
+}
+.line::after {
+    border-color: var(--arrow-color);
+}
+.complete {
+    position: absolute;
+    bottom: 20px;
+    right: 1%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    text-align: center;
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+    font-size: 15px;
+}
+.complete:hover {
+    background: black;
+    border-color: black;
+    color: #fff;
+}
+#passButton:active {
+    background: black;
+    border-color: #fff;
+}
+.round_2 button {
+    padding: 15px 64px;
+    margin: 30px 25px 30px 25px;
+    display: inline-block;
+    font-family: segoe UI;
+    font-size: 14px;
+    outline: none;
+    color: #fff;
+    border-radius: 30px;
+    font-weight: bold;
+}
+#passButton {
+    background: #fff;
+    border: 2px solid #ef4836;
+    border-radius: 10px;
+    color: #ef4836;
+}
+#passButton:hover {
+    background: #ef4836;
+    border-color: #ef4836;
+    color: #fff;
+}
+#passButton:active {
+    background: #ef4836;
+    border-color: #fff;
+}
+#dribbleButton {
+    background: #fff;
+    border: 2px solid #f9bf3b;
+    border-radius: 10px;
+    color: #f9bf3b;
+}
+#dribbleButton:hover {
+    background: #f9bf3b;
+    border-color: #f9bf3b;
+    color: #fff;
+}
+#dribbleButton:active {
+    background: #f9bf3b;
+    border-color: #fff;
+}
+#shootButton {
+    background: #fff;
+    border: 2px solid #59abe3;
+    border-radius: 10px;
+    color: #59abe3;
+}
+#shootButton:hover {
+    background: #59abe3;
+    border-color: #59abe3;
+    color: #fff;
+}
+#shootButton:active {
+    background: #59abe3;
+    border-color: #fff;
+}
+.delete_controls > button {
+    background: #fff;
+    border: 2px solid #abb7b7;
+    border-radius: 10px;
+    color: #abb7b7;
+}
+.delete_controls > button:hover {
+    background: #abb7b7;
+    border-color: #abb7b7;
+    color: #fff;
+}
+.delete_controls > button:active {
+    background: #abb7b7;
+    border-color: #fff;
+}
+.controls > button, .setpiece > button {
+    background: #fff;
+    border: 2px solid red;
+    border-radius: 10px;
+    color: red;
+}
+.controls > button:hover, .setpiece > button:hover {
+    background: red;
+    border-color: red;
+    color: #fff;
+}
+.controls > button:active, .setpiece > button:active {
+    background: red;
+    border-color: #fff;
+}
+
+.op_controls > button, .op_setpiece > button {
+    background: #fff;
+    border: 2px solid blue;
+    border-radius: 10px;
+    color: blue;
+}
+.op_controls > button:hover, .op_setpiece > button:hover {
+    background: blue;
+    border-color: blue;
+    color: #fff;
+}
+.op_controls > button:active, .op_setpiece > button:active {
+    background: blue;
+    border-color: #fff;
+}
+.main_controls {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+.main_controls > button{
+    background: #fff;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: black;
+}
+.main_controls > button:hover{
+    background: black;
+    border-color: black;
+    color: #fff;
+}
+.main_controls > button:active{
+    background: black;
+    border-color: #fff;
+}
+.main_nav {
+    font-size: 20px;
+    font-weight: 600;
+    width: 493px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border: solid 3px black;
+    border-right: 0;
+    border-top: 0;
+    display: flex;
+}
+.main_nav > div:hover {
+    background: black;
+    border-color: black;
+    color: #fff;
+}
+button {
+    cursor: pointer;
+}

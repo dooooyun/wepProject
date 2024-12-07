@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mainpage</title>
+    <link rel="stylesheet" href="public/styles.css">
+</head>
+<body>
+    <header>
+        <div style="font-weight: 900; font-size: 50px; border-radius: 50px; width: 500px; height: 30px; line-height: 30px; text-align: center; margin: auto; margin-top: 30px; font-style: oblique;">SQUAD-MAKER</div>
+    </header>
+    <hr style="margin-top: 20px; margin-bottom: 0; background-color: black; height: 3px; border: none;">
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            <nav>
+                <div class="main_nav">
+                    <div onclick="location.href='/Users/d/Desktop/univ/2024_2/WEBP/project/tacticBoard.html'" style="cursor: pointer; padding: 0 25.1px;">전술판</div>
+                    <div style="cursor: pointer; padding: 0 25px;">나의 전술</div>
+                    <div style="cursor: pointer; padding: 0 25px;">나의 스쿼드</div>
+                    <div onclick="location.href='/Users/d/Desktop/univ/2024_2/WEBP/project/card.html'" style="cursor: pointer; padding: 0 25px;">나의 카드</div>
+                </div>
+            </nav>
+            <div style="width: 200px; height: 300px; margin-left: 60px;">
+                <!-- <iframe width="200px" height="300px" src="card/card.html" frameborder="0"></iframe> -->
+            </div>
+        </div>
+        <article>
+            <!-- 필드 -->
+            <div class="main_field" id="main_field">
+                <!-- 포메이션 -->
+                <div class="main_controls" style="top: 10px; left: 10%;">
+                    <button id="changeFormation">포메이션 변경</button>
+                    <select id="formationSelector" style="display: none;">
+                        <option value="433">4-3-3</option>
+                        <option value="4231">4-2-3-1</option>
+                        <option value="4123">4-1-2-3</option>
+                        <option value="442">4-4-2</option>
+                        <option value="523">5-2-3</option>
+                    </select>
+                </div>
+                <!-- 왼쪽 팀 (팀 A) -->
+                <div class="team">
+                    <!-- 골키퍼 -->
+                    <div class="player" id="player1" style="bottom: 10%; left: 47%;" draggable="true">GK</div>
+                    <!-- 수비수 -->
+                    <div class="player" id="player2" style="bottom: 30%; left: 17%;" draggable="true">LB</div>
+                    <div class="player" id="player3" style="bottom: 30%; left: 37%;" draggable="true">CB</div>
+                    <div class="player" id="player4" style="bottom: 30%; left: 57%;" draggable="true">CB</div>
+                    <div class="player" id="player5" style="bottom: 30%; left: 77%;" draggable="true">RB</div>
+                    <!-- 미드필더 -->
+                    <div class="player" id="player6" style="bottom: 55%; left: 27%;" draggable="true">LCM</div>
+                    <div class="player" id="player7" style="bottom: 55%; left: 47%;" draggable="true">CM</div>
+                    <div class="player" id="player8" style="bottom: 55%; left: 67%;" draggable="true">RCM</div>
+                    <!-- 공격수 -->
+                    <div class="player" id="player9" style="bottom: 80%; left: 27%;" draggable="true">LW</div>
+                    <div class="player" id="player10" style="bottom: 80%; left: 47%;" draggable="true">ST</div>
+                    <div class="player" id="player11" style="bottom: 80%; left: 67%;" draggable="true">RW</div>
+                </div>
+            </div>
+        </article>
+    </div>
+    <script src="public/js/main_position.js"></script>
+</body>
+</html>

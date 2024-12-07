@@ -68,14 +68,14 @@ function drawLine(x1, y1, x2, y2, styleClass) {
 
     // 스타일 설정 (패스, 드리블, 슈팅에 따라 변경)
     if (styleClass === 'line-pass') {
-        line.style.backgroundColor = 'green'; // 패스는 초록색
-        line.style.setProperty('--arrow-color', 'green');
+        line.style.backgroundColor = '#ef4836';
+        line.style.setProperty('--arrow-color', '#ef4836');
     } else if (styleClass === 'line-dribble') {
-        line.style.backgroundColor = 'red'; // 드리블은 빨간색
-        line.style.setProperty('--arrow-color', 'red');
+        line.style.backgroundColor = '#f9bf3b';
+        line.style.setProperty('--arrow-color', '#f9bf3b');
     } else if (styleClass === 'line-shooting') {
-        line.style.backgroundColor = 'orange'; // 슈팅은 주황색
-        line.style.setProperty('--arrow-color', 'orange');
+        line.style.backgroundColor = '#59abe3'; // 슈팅은 주황색
+        line.style.setProperty('--arrow-color', '#59abe3');
     }
 
     // 화살표 추가
@@ -91,4 +91,51 @@ function drawLine(x1, y1, x2, y2, styleClass) {
     arrow.style.borderColor = line.style.backgroundColor;
 
     fieldElement.appendChild(line);
+}
+
+document.getElementById('deleteLines').addEventListener('click', deleteLines);
+
+function deleteLines() {
+    // SVG로 그린 선 삭제
+    const svg = document.getElementById('curveCanvas');
+    if (svg) {
+        while (svg.firstChild) {
+            svg.removeChild(svg.firstChild);
+        }
+    }
+
+    // HTML div로 그린 선 삭제
+    const lines = document.querySelectorAll('.line');
+    lines.forEach(line => line.remove());
+
+    alert("모든 선이 삭제되었습니다.");
+}
+
+document.getElementById('enableLineSelection').addEventListener('click', () => {
+    isLineSelectionMode = true;
+    enableLineSelection();
+    alert("선 선택 삭제 모드가 활성화되었습니다.");
+});
+
+document.getElementById('disableLineSelection').addEventListener('click', () => {
+    isLineSelectionMode = false;
+    alert("선 선택 삭제 모드가 비활성화되었습니다.");
+});
+
+function enableLineSelection() {
+    if (!isLineSelectionMode) return;
+
+    const lines = document.querySelectorAll('.line');
+    lines.forEach(line => {
+        line.removeEventListener('click', handleLineClick); // 기존 이벤트 제거
+        line.addEventListener('click', handleLineClick); // 새로운 이벤트 연결
+    });
+}
+
+function handleLineClick(e) {
+    if (isLineSelectionMode) {
+        e.stopPropagation();
+        this.remove();
+        alert("선이 삭제되었습니다.");
+    }
 }

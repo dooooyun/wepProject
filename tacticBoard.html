@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>축구 전술판</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="public/styles.css">
 </head>
 <body>
     <div class="flow_controls">
         <button id="passButton">패스</button>
         <button id="dribbleButton">선수 움직임</button>
         <button id="shootButton">슈팅</button>
+    </div>
+    <div class="delete_controls">
+        <button id="deleteLines">모든 선 삭제</button>
+        <button id="enableLineSelection">선 선택 삭제 활성화</button>
+        <button id="disableLineSelection">선 선택 삭제 비활성화</button>
     </div>
     <!-- 우리팀 포메이션 -->
     <div class="controls">
@@ -97,11 +102,13 @@
             <div class="player" id="player22" style="top: 73%; right: 40%;" draggable="true">LW</div>
         </div>
     </div>
+    <button class="complete" onclick="location.href='/Users/d/Desktop/univ/2024_2/WEBP/project/main.html'">완료</button>
 
     <!-- 자바스크립트 -->
-    <script src="move.js"></script>
-    <script src="position.js"></script>
-    <script src="setpiece.js"></script>
-    <script src="line.js"></script>
+    <script src="public/js/move.js"></script>
+    <script src="public/js/position.js"></script>
+    <script src="public/js/setpiece.js"></script>
+    <script src="public/js/line.js"></script>
+    
 </body>
 </html>

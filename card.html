@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선수 카드</title>
+    <link rel="stylesheet" href="public/styles.css">
+</head>
+<body>
+    <div style="display: flex;">
+        <div class="form-container">
+            <h1>선수 카드 생성</h1>
+            <form id="playerForm">
+                <label for="playerImage">이미지 선택:</label>
+                <input type="file" id="playerImage" accept="image/*">
+
+                <label for="playerName">이름:</label>
+                <input type="text" id="playerName" required>
+                
+                <label for="playerPosition">포지션:</label>
+                <input type="text" id="playerPosition" required>
+                
+                <label for="statSpeed">속도:</label>
+                <input type="number" id="statSpeed" min="0" max="99" required>
+                
+                <label for="statShoot">슛:</label>
+                <input type="number" id="statShoot" min="0" max="99" required>
+                
+                <label for="statPass">패스:</label>
+                <input type="number" id="statPass" min="0" max="99" required>
+                
+                <label for="statDribble">드리블:</label>
+                <input type="number" id="statDribble" min="0" max="99" required>
+                
+                <label for="statDefense">수비:</label>
+                <input type="number" id="statDefense" min="0" max="99" required>
+                
+                <label for="statPhysical">피지컬:</label>
+                <input type="number" id="statPhysical" min="0" max="99" required>
+                
+                <button class="card_complete" type="submit">카드 생성</button>
+            </form>
+        </div>
+
+        <div class="player-cards"></div>
+    </div>
+    <button class="complete" onclick="location.href='/Users/d/Desktop/univ/2024_2/WEBP/project/main.html'">메인으로</button>
+
+    <script src="public/js/cardscript.js"></script>
+</body>
+</html>
