@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="public/styles.css">
 </head>
 <body>
-    <div style="display: flex;">
+    <div class="cardsmade">
         <div class="form-container">
             <h1>선수 카드 생성</h1>
             <form id="playerForm">
@@ -18,8 +18,8 @@
                 <label for="playerName">이름:</label>
                 <input type="text" id="playerName" required>
                 
-                <label for="playerPosition">포지션:</label>
-                <input type="text" id="playerPosition" required>
+                <label for="playerPosition">등번호:</label>
+                <input type="number" id="playerPosition" min="0" max="99" required>
                 
                 <label for="statSpeed">속도:</label>
                 <input type="number" id="statSpeed" min="0" max="99" required>
@@ -42,8 +42,7 @@
                 <button class="card_complete" type="submit">카드 생성</button>
             </form>
         </div>
-
-        <div class="player-cards"></div>
+        <div class="player-cards" id="playerCardsContainer"></div>
     </div>
     <button class="complete" onclick="location.href='/Users/d/Desktop/univ/2024_2/WEBP/project/main.html'">메인으로</button>
 
