@@ -69,14 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const playerElement = playerElements[index];
             if (playerData) {
                 playerElement.innerHTML = `
-                    <span class="player-name">${playerData.name}</span>
-                    <span class="player-position">${playerData.position}</span>
+                    <span class="player-name" style="color: black; width:50px; border: none;">${playerData.name}</span>
+                    <span class="player-position" style="height: 20px; width:50px; line-height: 20px; color: black; border: none;">${playerData.position}</span>
                 `;
                 selectedPlayers.add(playerData.name);
             } else {
                 playerElement.innerHTML = `
-                    <div class="player-name"></div>
-                    <div class="player-position"></div>
+                    <div class="player-name" style="color: black; width:50px; border: none;"></div>
+                    <div class="player-position" style="height: 20px; width:50px; line-height: 20px; color: black; border: none;"></div>
                 `;
             }
         });

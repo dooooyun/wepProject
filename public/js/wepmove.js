@@ -7,3 +7,9 @@ function moveToCard() {
 function moveToTactic() {
     window.location.href = "./tacticBoard.html";
 }
+function moveToUse() {
+    window.location.href = "./howToUse.html";
+}
+function moveToServer() {
+    window.location.href = "viewer.html";
+}

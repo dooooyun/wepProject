@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mainpage</title>
-    <link rel="stylesheet" href="public/styles.css">
+    <link rel="stylesheet" href="../public/styles.css">
 </head>
-<body>
+<body style="margin: auto;">
     <header>
-        <div style="font-weight: 900; font-size: 50px; border-radius: 50px; width: 500px; height: 30px; line-height: 30px; text-align: center; margin: auto; margin-top: 30px; font-style: oblique;">SQUAD-MAKER</div>
+        <div style="font-weight: 900; font-size: 50px;  text-align: center; margin: auto; margin-top: 30px; font-style: oblique;">SQUAD-MAKER</div>
     </header>
     <hr style="margin-top: 20px; margin-bottom: 0; background-color: black; height: 3px; border: none;">
-    <div style="display: flex; justify-content: space-between;">
-        <div style="margin: 0 auto;">
+    <div style="display: flex; justify-content: center; gap: 10px;">
+        <div>
             <nav>
                 <div class="main_nav">
-                    <div onclick="moveToTactic()" style="cursor: pointer; padding: 0 66.5px;">전술판</div>
-                    <div style="cursor: pointer; padding: 0 66.5px;">나의 전술</div>
-                    <div onclick="moveToCard()" style="cursor: pointer; padding: 0 66.5px;">나의 카드</div>
+                    <div onclick="moveToTactic()" style="cursor: pointer; width: 200px;">전술판</div>
+                    <div onclick="moveToCard()" style="cursor: pointer; width: 200px;">나의 카드</div>
+                    <div onclick="moveToUse()" style="cursor: pointer; width: 200px;">사용 방법</div>
                 </div>
             </nav>
             <div class="details">
@@ -72,9 +72,9 @@
             </div>
         </article>
     </div>
-    <script src="public/js/main_position.js"></script>
-    <script src="public/js/callplayer.js" defer></script>
-    <script src="public/js/savesquad.js"></script>
-    <script src="public/js/wepmove.js" defer></script>
+    <script src="../public/js/main_position.js"></script>
+    <script src="../public/js/callplayer.js" defer></script>
+    <script src="../public/js/savesquad.js"></script>
+    <script src="../public/js/wepmove.js" defer></script>
 </body>
 </html>

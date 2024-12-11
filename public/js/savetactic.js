@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const saveTacticsButton = document.getElementById('saveTactics');
     const loadTacticsButton = document.getElementById('loadTactics');
+    const deleteTacticsButton = document.getElementById('deleteTactics'); // 삭제 버튼
     const fieldElement = document.getElementById('field');
 
     let savedTactics = JSON.parse(localStorage.getItem('tacticsList')) || [];
@@ -129,5 +130,32 @@ document.addEventListener('DOMContentLoaded', () => {
         renderLines(lines);
 
         alert('전술이 성공적으로 불러와졌습니다.');
+    });
+
+    deleteTacticsButton.addEventListener('click', () => {
+        if (savedTactics.length === 0) {
+            alert('저장된 전술이 없습니다.');
+            return;
+        }
+
+        const tacticNames = savedTactics.map((tactic, index) => `${index}: ${tactic.name}`).join('\n');
+        const selectedTacticIndex = prompt(
+            `삭제할 전술을 선택하세요:\n${tacticNames}`
+        );
+
+        if (
+            selectedTacticIndex === null ||
+            isNaN(selectedTacticIndex) ||
+            selectedTacticIndex < 0 ||
+            selectedTacticIndex >= savedTactics.length
+        ) {
+            alert('올바른 번호를 입력하지 않아 삭제가 취소되었습니다.');
+            return;
+        }
+
+        const deletedTactic = savedTactics.splice(selectedTacticIndex, 1);
+        localStorage.setItem('tacticsList', JSON.stringify(savedTactics));
+
+        alert(`"${deletedTactic[0].name}" 전술이 삭제되었습니다.`);
     });
 });

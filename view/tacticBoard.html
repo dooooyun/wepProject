@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>축구 전술판</title>
-    <link rel="stylesheet" href="public/styles.css">
+    <link rel="stylesheet" href="../public/styles.css">
 </head>
 <body>
     <div class="flow_controls">
@@ -66,6 +66,11 @@
     <div class="tactics-controls">
         <button id="saveTactics">전술 저장</button>
         <button id="loadTactics">전술 불러오기</button>
+        <button id="deleteTactics">전술 삭제</button>
+        <!--
+        <button onclick="startScreenShare()">화면 공유 시작</button>
+        <button onclick="stopScreenShare()">화면 공유 종료</button>
+    -->
     </div>
 
     <!-- 필드 -->
@@ -110,12 +115,17 @@
     </div>
     <button class="complete" onclick="moveToMain()">완료</button>
 
+
+    <video id="localVideo" autoplay playsinline></video>
     <!-- 자바스크립트 -->
-    <script src="public/js/move.js"></script>
-    <script src="public/js/position.js"></script>
-    <script src="public/js/setpiece.js"></script>
-    <script src="public/js/line.js"></script>
-    <script src="public/js/savetactic.js"></script>
-    <script src="public/js/wepmove.js" defer></script>
+    <script src="../public/js/move.js"></script>
+    <script src="../public/js/position.js"></script>
+    <script src="../public/js/setpiece.js"></script>
+    <script src="../public/js/line.js"></script>
+    <script src="../public/js/savetactic.js"></script>
+    <script src="../public/js/wepmove.js" defer></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../public/js/client.js"></script>
+    <script src="server.js"></script>
 </body>
 </html>

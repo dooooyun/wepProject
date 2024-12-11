@@ -74,20 +74,20 @@ function renderPlayerCards() {
 
         playerCard.innerHTML = `
             <div class="card-header">
-                <span class="player-position">${card.position}</span>
+                <div class="player-position">${card.position}</div>
             </div>
             <div class="player-photo">
                 <img src="${card.imageUrl}" alt="Player Photo">
             </div>
             <div class="card-body">
-                <h2 class="player-name">${card.name}</h2>
+                <div class="player-name">${card.name}</div>
                 <div class="stats">
-                    <div class="stat"><span>속도</span> <strong>${card.stats[0]}</strong></div>
-                    <div class="stat"><span>슛</span> <strong>${card.stats[1]}</strong></div>
-                    <div class="stat"><span>패스</span> <strong>${card.stats[2]}</strong></div>
-                    <div class="stat"><span>드리블</span> <strong>${card.stats[3]}</strong></div>
-                    <div class="stat"><span>수비</span> <strong>${card.stats[4]}</strong></div>
-                    <div class="stat"><span>피지컬</span> <strong>${card.stats[5]}</strong></div>
+                    <div class="stat">${card.stats[0]} <span>PAC</span></div>
+                    <div class="stat">${card.stats[1]} <span>SHO</span></div>
+                    <div class="stat">${card.stats[2]} <span>PAS</span></div>
+                    <div class="stat">${card.stats[3]} <span>DRI</span></div>
+                    <div class="stat">${card.stats[4]} <span>DEF</span></div>
+                    <div class="stat">${card.stats[5]} <span>PHY</span></div>
                 </div>
             </div>
         `;

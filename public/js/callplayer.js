@@ -26,20 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
         return `
             <div class="player-card">
                 <div class="card-header">
-                    <span class="player-position">${player.position}</span>
+                    <div class="player-position" style="font-size: 18px;">${player.position}</div>
                 </div>
                 <div class="player-photo">
                     <img src="${player.imageUrl}" alt="Player Photo">
                 </div>
                 <div class="card-body">
-                    <h2 class="player-name">${player.name}</h2>
+                    <div class="player-name">${player.name}</div>
                     <div class="stats">
-                        <div class="stat"><span>속도</span> <strong>${player.stats[0]}</strong></div>
-                        <div class="stat"><span>슛</span> <strong>${player.stats[1]}</strong></div>
-                        <div class="stat"><span>패스</span> <strong>${player.stats[2]}</strong></div>
-                        <div class="stat"><span>드리블</span> <strong>${player.stats[3]}</strong></div>
-                        <div class="stat"><span>수비</span> <strong>${player.stats[4]}</strong></div>
-                        <div class="stat"><span>피지컬</span> <strong>${player.stats[5]}</strong></div>
+                        <div class="stat">${player.stats[0]} <span>PAC</span></div>
+                        <div class="stat">${player.stats[1]} <span>SHO</span></div>
+                        <div class="stat">${player.stats[2]} <span>PAS</span></div>
+                        <div class="stat">${player.stats[3]} <span>DRI</span></div>
+                        <div class="stat">${player.stats[4]} <span>DEF</span></div>
+                        <div class="stat">${player.stats[5]} <span>PHY</span></div>
                     </div>
                 </div>
             </div>
@@ -85,15 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (index === players.length) {
                         // "선수 없음"이 선택된 경우
                         playerElement.innerHTML = `
-                            <span class="player-name"></span>
-                            <span class="player-position"></span>
+                            <span class="player-name" style="color: black; border: none;"></span>
+                            <span class="player-position" style="color: black; border: none;"></span>
                         `;
                     } else if (players[index] && !selectedPlayers.has(players[index].name)) {
                         // 선수 카드 선택
                         const selectedPlayer = players[index];
                         playerElement.innerHTML = `
-                            <div class="player-name">${selectedPlayer.name}</div>
-                            <div class="player-position">${selectedPlayer.position}</div>
+                            <div class="player-name" style="color: black; width:50px; border: none;">${selectedPlayer.name}</div>
+                            <div class="player-position" style="height: 20px; width:50px; line-height: 20px; color: black; border: none;">${selectedPlayer.position}</div>
                         `;
                         selectedPlayers.add(selectedPlayer.name); // 선택된 선수 추가
                     } else {
