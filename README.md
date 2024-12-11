@@ -27,7 +27,7 @@
 ## 주요 기능
 
 ### **Main 페이지**
-![Main Page](https://prod-files-secure.s3.us-west-2.amazonaws.com/706e0b50-be80-4181-beae-75be883ed775/a4230dc8-e57c-4470-b961-764f9de25910/image.png)
+![alt text](image.png)
 
 #### **NAV 기능**
 - 전술판, 나의 카드, 사용법 페이지로 이동할 수 있는 네비게이션 바 제공
@@ -76,12 +76,3 @@
 
 #### **설명**
 - 프로젝트의 주요 기능 및 페이지 사용법 안내 제공
-
----
-
-## 설치 및 실행 방법
-
-1. 프로젝트를 클론합니다:
-   ```bash
-   git clone https://github.com/username/squad-maker.git
-   cd squad-maker
